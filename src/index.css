@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GREYCOAST CAPITAL — Design System
+   ============================================================ */
+@theme {
+  /* Deep navy */
+  --color-navy-950: #050817;
+  --color-navy-900: #0a1330;
+  --color-navy-800: #101c4d;
+  --color-navy-700: #16225c;
+  --color-navy-600: #1e2f7a;
+
+  /* Royal blue */
+  --color-royal-600: #2536b8;
+  --color-royal-500: #2e40b0;
+  --color-royal-400: #3a4dc4;
+  --color-royal-300: #6376e0;
+
+  /* Signature violet */
+  --color-violet-500: #7c3aed;
+  --color-violet-400: #a855f7;
+
+  /* Neutrals */
+  --color-ink: #1b2233;
+  --color-muted: #5b6472;
+  --color-mist: #f5f7fb;
+
+  /* Fonts */
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------- Base (in @layer so Tailwind utilities like text-white WIN) ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: #ffffff;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    /* NOTE: default color hint only — any text-* utility overrides it */
+    color: var(--color-navy-700);
+  }
+}
+
+/* ============================================================
+   Utilities — modern accents
+   ============================================================ */
+
+/* Animated gradient clip text */
+.gradient-text {
+  background: linear-gradient(100deg, var(--color-royal-400), var(--color-violet-400), var(--color-royal-300));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gc-textshine 5s linear infinite;
+}
+@keyframes gc-textshine {
+  to { background-position: 200% center; }
+}
+
+/* Signature violet gradient border */
+.gc-gradient-border { position: relative; isolation: isolate; }
+.gc-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, var(--color-violet-500), var(--color-royal-400), var(--color-violet-400));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top accent bar */
+.gc-top-accent {
+  background: linear-gradient(90deg, var(--color-violet-500), var(--color-royal-500), var(--color-violet-400));
+}
+
+/* Rich dark mesh background (flat navy ki jagah) */
+.mesh-dark {
+  background-color: var(--color-navy-900);
+  background-image:
+    radial-gradient(50% 60% at 12% 0%, rgba(124, 58, 237, 0.35), transparent 60%),
+    radial-gradient(45% 55% at 92% 15%, rgba(58, 77, 196, 0.40), transparent 60%),
+    radial-gradient(60% 70% at 70% 100%, rgba(37, 54, 184, 0.30), transparent 60%);
+}
+
+/* Subtle grid pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Glow on hover */
+.hover-glow { transition: box-shadow .35s ease, transform .35s ease; }
+.hover-glow:hover { box-shadow: 0 20px 45px -12px rgba(46, 64, 176, 0.45); }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-mist); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-navy-700), var(--color-royal-500));
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .gradient-text { animation: none; }
+}
