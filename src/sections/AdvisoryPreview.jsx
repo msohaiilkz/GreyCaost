@@ -7,7 +7,7 @@ import { advisoryPreview } from "../data/site";
 
 export default function AdvisoryPreview() {
   return (
-    <section id="services" className="scroll-mt-24 bg-mist py-20 lg:py-28">
+    <section id="services" className="blue-wash scroll-mt-24 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="max-w-2xl">
           <Reveal from="up">

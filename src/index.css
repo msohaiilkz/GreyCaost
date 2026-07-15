@@ -17,9 +17,9 @@
   --color-royal-400: #3a4dc4;
   --color-royal-300: #6376e0;
 
-  /* Signature violet */
-  --color-violet-500: #7c3aed;
-  --color-violet-400: #a855f7;
+  /* Accent — blue shades (client: violet ki jagah blue) */
+  --color-violet-500: #1d4ed8;
+  --color-violet-400: #3b82f6;
 
   /* Neutrals */
   --color-ink: #1b2233;
@@ -92,11 +92,20 @@
   background: linear-gradient(90deg, var(--color-violet-500), var(--color-royal-500), var(--color-violet-400));
 }
 
+/* Soft blue shades wash — clean blue-tinted section background */
+.blue-wash {
+  background-color: #f4f6fd;
+  background-image:
+    radial-gradient(55% 75% at 100% 0%, rgba(58, 77, 196, 0.10), transparent 60%),
+    radial-gradient(50% 70% at 0% 100%, rgba(59, 130, 246, 0.06), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #eaeefb 100%);
+}
+
 /* Rich dark mesh background (flat navy ki jagah) */
 .mesh-dark {
   background-color: var(--color-navy-900);
   background-image:
-    radial-gradient(50% 60% at 12% 0%, rgba(124, 58, 237, 0.35), transparent 60%),
+    radial-gradient(50% 60% at 12% 0%, rgba(59, 130, 246, 0.35), transparent 60%),
     radial-gradient(45% 55% at 92% 15%, rgba(58, 77, 196, 0.40), transparent 60%),
     radial-gradient(60% 70% at 70% 100%, rgba(37, 54, 184, 0.30), transparent 60%);
 }

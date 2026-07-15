@@ -18,13 +18,13 @@ export default function Clients() {
 
       {/* Marquee */}
       <div className="group relative mt-14 flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_10%,#000_90%,transparent)]">
-        <div className="flex shrink-0 animate-[marquee_30s_linear_infinite] items-center gap-14 pr-14 group-hover:[animation-play-state:paused]">
+        <div className="flex shrink-0 animate-[marquee_32s_linear_infinite] items-center gap-12 pr-12 group-hover:[animation-play-state:paused]">
           {loop.map((c, i) => (
             <div
               key={i}
-              className="flex h-32 w-60 shrink-0 items-center justify-center rounded-2xl bg-white px-6 shadow-sm ring-1 ring-navy-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="flex h-40 w-72 shrink-0 items-center justify-center rounded-2xl bg-white px-8 shadow-sm ring-1 ring-navy-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <Img file={c.file} alt={c.name} className="max-h-24 max-w-[200px] object-contain" imgClassName="h-auto w-auto" />
+              <Img file={c.file} alt={c.name} className="max-h-28 max-w-[240px] object-contain" imgClassName="h-auto w-auto" />
             </div>
           ))}
         </div>

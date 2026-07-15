@@ -48,9 +48,9 @@ export const clients = {
     { name: "Globaleye", file: "globaleye.png" },
     { name: "Petrovietnam PVTrans", file: "petrovietnam.png" },
     { name: "Bainbridge Navigation", file: "bainbridge.png" },
-    // TODO: logos aane par uncomment karo
+    { name: "Apollo Engineers", file: "lk.jpeg" },
+    // TODO: PVT Logistics logo aane par uncomment karo
     // { name: "PVT Logistics", file: "pvt-logistics.png" },
-    // { name: "Apollo Engineers", file: "apollo.png" },
   ],
 };
 

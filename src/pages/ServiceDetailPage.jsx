@@ -80,7 +80,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* ===================== EXPERTISE — light cards ===================== */}
-      <section className="bg-mist py-20 lg:py-24">
+      <section className="blue-wash py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal from="up">
             <h2 className="font-display text-3xl font-bold text-navy-700 sm:text-4xl">
