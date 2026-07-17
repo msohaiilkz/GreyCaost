@@ -39,7 +39,7 @@ export default function About() {
             </Reveal>
           </div>
 
-          <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-muted">
+          <div className="mt-6 space-y-4 text-justify text-[15px] leading-relaxed text-muted">
             {about.paragraphs.map((p, i) => (
               <Reveal key={i} from="up" delay={0.05 * i}>
                 <p>{p}</p>

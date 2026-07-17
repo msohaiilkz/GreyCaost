@@ -51,7 +51,7 @@ export default function ServiceDetailPage() {
               as="h1"
               className="mt-4 font-display text-4xl font-extrabold uppercase leading-[1.08] text-navy-700 sm:text-5xl"
             />
-            <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-muted">
+            <div className="mt-6 space-y-4 text-justify text-[15px] leading-relaxed text-muted">
               {service.intro.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}

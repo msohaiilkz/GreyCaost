@@ -1,18 +1,40 @@
 import { useState } from "react";
 import Seo from "../components/Seo";
 import Reveal from "../components/Reveal";
-import Button from "../components/Button";
 import AnimatedText from "../components/anim/AnimatedText";
 import Breadcrumb from "../components/Breadcrumb";
 import { company } from "../data/site";
 
-export default function Contact() {
-  const [sent, setSent] = useState(false);
+// ⚠️ SETUP: web3forms.com pe jaakar info@greycoast-capital.com se free access key lein
+// aur yahan paste karein. Tab tak form submissions info@ inbox me drop nahi hongi.
+const WEB3FORMS_ACCESS_KEY = "REPLACE_WITH_WEB3FORMS_ACCESS_KEY";
 
-  const handleSubmit = (e) => {
+export default function Contact() {
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: backend / email service wire karna hai (EmailJS / API endpoint)
-    setSent(true);
+    setStatus("sending");
+    const formData = new FormData(e.target);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "New enquiry — Greycoast Capital website");
+    formData.append("from_name", "Greycoast Capital Website");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("sent");
+        e.target.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -78,9 +100,16 @@ export default function Contact() {
           {/* Form */}
           <Reveal from="left">
             <form onSubmit={handleSubmit} className="rounded-2xl bg-mist p-6 sm:p-8 ring-1 ring-navy-900/5">
-              {sent && (
-                <div className="mb-6 rounded-lg bg-royal-500/10 px-4 py-3 text-sm text-royal-600">
-                  Thank you! Your message has been noted. (Backend abhi wire karna baaki hai.)
+              {status === "sent" && (
+                <div className="mb-6 flex items-start gap-3 rounded-lg bg-emerald-500/10 px-4 py-3 text-sm text-emerald-700">
+                  <span className="mt-0.5">✓</span>
+                  <span>Thank you for reaching out! We'll get back to you within one business day.</span>
+                </div>
+              )}
+              {status === "error" && (
+                <div className="mb-6 flex items-start gap-3 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-600">
+                  <span className="mt-0.5">!</span>
+                  <span>Something went wrong. Please email us directly at {company.email}.</span>
                 </div>
               )}
               <div className="grid gap-5 sm:grid-cols-2">
@@ -93,7 +122,14 @@ export default function Contact() {
                 <Field label="How can we help?" name="message" textarea required />
               </div>
               <div className="mt-6">
-                <Button href="#" variant="solid" size="lg" onClick={handleSubmit}>Send Message</Button>
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-navy-700 to-royal-500 px-9 py-4 font-display text-base font-semibold text-white shadow-lg shadow-royal-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-royal-500/40 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                  <span className="relative">{status === "sending" ? "Sending…" : "Send Message"}</span>
+                </button>
               </div>
             </form>
           </Reveal>

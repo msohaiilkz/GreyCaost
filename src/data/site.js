@@ -49,6 +49,8 @@ export const clients = {
     { name: "Petrovietnam PVTrans", file: "petrovietnam.png" },
     { name: "Bainbridge Navigation", file: "bainbridge.png" },
     { name: "Apollo Engineers", file: "lk.jpeg" },
+    { name: "Learn Africa", file: "learn-africa.jpeg" },
+    { name: "Petroleum Energy Gas", file: "peg.jpeg" },
     // TODO: PVT Logistics logo aane par uncomment karo
     // { name: "PVT Logistics", file: "pvt-logistics.png" },
   ],
