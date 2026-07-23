@@ -8,7 +8,7 @@ import Reveal, { staggerParent, staggerChild } from "../components/Reveal";
 import AnimatedText from "../components/anim/AnimatedText";
 import Breadcrumb from "../components/Breadcrumb";
 import { serviceBySlug, services } from "../data/services";
-import { asset, video } from "../lib/assets";
+import { video } from "../lib/assets";
 
 export default function ServiceDetailPage() {
   const { slug } = useParams();
@@ -68,11 +68,11 @@ export default function ServiceDetailPage() {
               className="gc-gradient-border overflow-hidden rounded-2xl shadow-xl shadow-navy-900/10"
             >
               {videoSrc ? (
-                <video className="aspect-[4/3] w-full object-cover" autoPlay muted loop playsInline poster={asset(service.image) || undefined}>
+                <video className="aspect-video w-full object-cover" autoPlay muted loop playsInline preload="auto">
                   <source src={videoSrc} type="video/mp4" />
                 </video>
               ) : (
-                <Img file={service.image} alt={service.title} className="aspect-[4/3] w-full object-cover" />
+                <Img file={service.image} alt={service.title} className="aspect-video w-full object-cover" />
               )}
             </motion.div>
           </Reveal>
